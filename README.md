@@ -14,7 +14,7 @@ Use a regular command line to navigate to the SystemAndAdminPortal folder and in
 ## To run ##
 Use a regular command line to start the program with any of the following commands:
 * npm test 
-* node start (This will connect and run the program on the local server which can be accessed on a web browser using one of the following addresses:
+* node start (This will connect and run the program on the local server). This can be accessed on a web browser using one of the following addresses:
 	* Localhost:8080 
 	* 127.0.0.1:8080
 
