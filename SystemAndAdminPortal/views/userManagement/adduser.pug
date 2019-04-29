@@ -1,0 +1,60 @@
+//-
+//- adduser.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block content
+  h1.o-header__title Add User
+  
+  //- --------------------------------- Form used to add user ------------------------------------------- -//
+
+  form(method='POST')
+
+
+      //- ------- Username Input for new User ------- -//
+
+      .form-group
+          label(for='username') Username
+          input.form-control(type='text', name='username', autofocus)
+      br
+
+
+      //- --------- Email input for new User -------- -//
+
+      .form-group
+          label(for='email') Email
+          input.form-control(type='text', name='email')
+      br
+
+
+      //- ----- Display Name input for new User ----- -//
+
+      .form-group
+          label(for='displayName') Display Name
+          input.form-control(type='text', name='displayName')
+      br
+
+
+      //- ---- Dropdown selection for user type ----- -//
+
+      .form-group
+          label(for='userType') User Type
+          select.form-control(name='userType')
+            option(value='student') Student
+            option(value='admin') Admin
+      br
+
+      //- ------------- Add User Button ------------- -//
+
+      .form-group
+          div#addUserButton
+            input.form-control(type='submit' value="Add User") 
+
+      br
+      br

@@ -1,0 +1,31 @@
+//-
+//- uploadvhd.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block title
+	title Upload VHD
+
+block content
+
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/vms')  Virtual Machine Management     
+		img(src='/assets/img/arrow.gif')
+		a(href='')  Upload VHD
+
+	//- ----------------------- Form to upload VHD -------------------------------- -// 
+
+	h1.o-header__title Upload Virtual Hard Drives
+	form(action='/admin/upload/req',enctype='multipart/form-data',method='post')
+		input#upload-input(type='file',name='title')
+		input#submit(type='submit',value='Start Upload')

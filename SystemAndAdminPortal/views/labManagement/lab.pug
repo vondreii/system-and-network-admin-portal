@@ -1,0 +1,212 @@
+//-
+//- lab.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout.pug
+
+block title
+	title Labs Index
+
+block content
+
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/lab')  Labs 
+		
+	div#lab
+
+		script(src='../js/labpage.js')
+		script(src='../js/visibility.js')
+
+		//- visibility.js is empty but can be used to control the visibility of labs to students for "deploying/undeploying" labs
+		//- Currently visibility is being controlled in this file and currently does not work
+
+		//- Both Admin and Student users are directed to this file when clicking "labs". However the Admin has a different view
+		//- than a student and can view additional options eg "Add labs"
+
+		script.
+
+			var headingDiv = document.getElementById('lab');
+
+			var heading1 = document.createElement("h1")
+			var heading2 = document.createElement("h2")
+			heading1.setAttribute('class', 'o-header__title');
+
+			var para1 = document.createElement("p")
+
+
+			// ------------- If the user type is Admin ------------- //
+
+			if(!{userType}=='admin'){
+
+				heading1.innerHTML = 'Lab Management';											// Different headings  
+				heading2.innerHTML = 'Manage Labs on the System and Network Admin Portal';
+				para1.innerHTML = 'List of labs available to students:';						// Different Messages 
+			}
+
+			// ----------- If the user type is a Student ----------- //
+
+			else{
+				heading1.innerHTML = 'My Labs';
+				para1.innerHTML = 'New content will be uploaded weekly for each lab. Select a lab to view your exercises, feeback or other material.';
+			}
+
+			headingDiv.appendChild(heading1);
+			headingDiv.appendChild(heading2);				
+			headingDiv.appendChild(para1);
+		
+		div#labs-container
+
+		script.
+
+			// ----------- Visibility toggle functions ----------- //
+
+			// ----------- Undeploy/Default ----------- //
+
+			function visibilityOff(id) {							// Function for visibility to be disabled for students (For a particular lab) 
+				var e = document.getElementById(id);
+				//e.style.display = 'none';							// Does not work - makes the div has no display style (invisible)
+				
+				if(!{userType}=='admin'){
+					//var e = document.getElementById(id);
+					//e.style.display = 'block';
+					alert('Visibility to students off');
+				}
+			}
+
+			// ----------- Deploy ----------- //
+
+			function visibilityOn() {								// Function for visibility to be disabled for a lab
+				var e = document.getElementById('labs-container');
+				e.style.display = 'block';							// The div will be displayed
+				if(!{userType}=='admin'){
+					alert('New Lab Added');							// Admins get an alert if deployment is successful 
+				}
+			}
+
+			// ----------- List of Labs are displayed ----------- //
+
+			var obj = !{labinfo};
+			var LabsIndex = obj.LabsIndex;
+			var labsContainer = $('#labs-container');
+			for (var i in LabsIndex) {								// For every lab in labinfo.json
+
+				var displayContainer = $('<div>', {					// Another div or extra styling 
+					class: 'display',
+					id: 'display'
+				});
+
+				var lab = $('<div>', {
+					class: 'lab',
+					html: LabsIndex[i].newlabname,					// Create a div to display the lab in
+				});
+
+				var viewButton = $('<button>', {					// View button
+					html: 'View',
+					id: i
+				});
+
+				var viewLink = $('<a>', {							// Link directing to web.js in dev/routers, opens weeklyExercises.pug 
+					href: '/weeklyExercises',
+				});
+
+				var breakLine = $('<div>', {						// Break line (couldn't find another way to do this)
+					class: 'break'
+				});
+
+				viewLink.append(viewButton);						// Everything is appended onto associated divs and displayed
+				lab.append(viewLink);
+				lab.append("</a>");
+
+				labsContainer.append(displayContainer);
+				displayContainer.append(lab);
+
+				if(!{userType}=='admin'){							// If user is admin, they can see deploy/undeploy labs
+					var buttonCont = $('<div>', {
+						class: 'buttonCont',
+					});
+
+					var deployButton = $('<button>', {				// Deploy labs, calls visibilityOn() function to make lab visible
+						html: 'Deploy',
+						id: i,
+						class: 'deployButton',
+						onclick: 'visibilityOn()',
+					});
+
+					var unDeployButton = $('<button>', {			// Undeploy labs, calls visibilityOff() to make labs unseen 
+						html: 'Undeploy',
+						id: i,
+						class: 'unDeployButton',
+						onclick: 'visibilityOff(display)',
+					});
+
+					buttonCont.append(deployButton);				// Elements appended onto associated divs and displayed
+					buttonCont.append(unDeployButton);
+					labsContainer.append(buttonCont);
+					labsContainer.append(breakLine);
+				}
+			}
+
+		br
+
+		div#uploadMenuElement
+
+		div#deleteMenuElement
+			
+		br
+		br
+
+		script.	
+			if(!{userType}=='admin'){
+
+
+				// ----- CREATING A NEW LAB ICON ----- //
+
+				var uploadOption = document.getElementById('uploadMenuElement');
+				
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/add.png')
+
+				var newLink = document.createElement("a")
+				newLink.href ='/admin/createNewLab'
+				newLink.innerHTML = 'Create Lab';
+
+				uploadOption.appendChild(imgLink);
+				uploadOption.appendChild(document.createElement("br"));
+				uploadOption.appendChild(newLink);
+
+
+				// ----- DELETING A LAB ICON ----- //
+
+				var deleteOption = document.getElementById('deleteMenuElement');
+					
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/deleteFile.png')
+
+				var newLink = document.createElement("a")
+				newLink.href ='/admin/deleteLabs'
+				newLink.innerHTML = 'Delete Lab';
+
+				deleteOption.appendChild(imgLink);
+				deleteOption.appendChild(document.createElement("br"));
+				deleteOption.appendChild(newLink);
+
+			}
+
+
+		br
+		br
+
+
+
+		
+
+		

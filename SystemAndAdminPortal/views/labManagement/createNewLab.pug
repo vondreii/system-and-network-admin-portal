@@ -1,0 +1,104 @@
+//-
+//- createNewLab.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block title
+	title Add New Lab
+
+block content
+	
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/lab')  Labs 
+		img(src='/assets/img/arrow.gif')
+		a(href='/lab')  Create a new Lab
+
+	h1.o-header__title Create New Lab
+
+	//- --------------------------------- Form to Create new lab ----------------------------------------- -//
+
+	form(action='/admin/createLab/req',enctype="multipart/form-data",method='post',id="form1")
+		label(for='newlabname') Lab Name
+		input(id='newlabname',name='newlabname',type='text',required='',placeholder='ex. Week 1 Lab')
+
+		br
+		br
+
+		//- div "assignedCourses" not currently being used properly
+		//- New labs can be assigned to (used in) multiple courses that already exist. 
+		//- The checkboxes listing the existing courses do not work - choosing one/more will make everything crash
+
+		div#assignedCourses
+
+		br 
+		br
+
+		input(id='submit',type='submit' value='Submit')
+
+
+	script.
+
+		// -------------------------- Variables -------------------------- //
+
+			var form = document.getElementById('form1'); 	// Creates form element
+			var breakLine = document.createElement('br'); 	// Creates a break line
+
+
+
+		// ------------------------ Course Object ------------------------ //
+			
+			var obj = !{labinfo}; 							// Creates a new object using labInfo.json
+			var CourseIndex = obj.CourseIndex;			 	// courseIndex in labinfo.json stores information about courses
+			var checkBoxes = $('#assignedCourses'); 		// A variable created to store the #assignedCourses div  
+
+
+
+		// ------------------------- HTML Message ----------------------- //
+
+			var message = $('<label>', {
+				html: 'Please select the courses you would like to add this lab to.'		
+			});
+
+			message.append(breakLine); 						// Breakline added after message shown
+			checkBoxes.append(message); 					// Message added to #assignedCourses div 
+
+
+
+		// --------------------- HTML Courses displayed ----------------- //
+
+			for (var i in CourseIndex) { 					// For every Course in labInfo.json
+
+				var courseCheck = $('<input>', { 			// Create an input element
+
+					//name: 'assignedCourse' + (+i + +1),	// Attributes assigned to element 
+					id: 'assignedCourse' + (+i + +1),
+					type: 'checkbox',
+					value: CourseIndex[i].newCourseName		
+
+				});
+
+				var courseLabel = $('<label>', {			// And create a label for display 
+					for: 'assignedCourse' + (+i + +1),
+					html: CourseIndex[i].newCourseName		// Display the name of the course
+				});
+
+				checkBoxes.append(courseCheck);				// Add the input to the #assignedCourses div 
+				checkBoxes.append(courseLabel);				// Add the labels to the #assignedCourses div 
+
+			}
+
+	br
+	br
+	br
+		
+	

@@ -1,0 +1,22 @@
+//-
+//- forgot.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends resetlayout
+
+block content
+
+	//- User enters their email as part of reseting password process
+
+	h1.o-header__title Forgot Your Password? 
+	form(method='POST')
+		legend Forgot Password
+		.form-group
+			label(for='email') Email
+			input.form-control(type='text', name='email', autofocus)
+			button(type='submit') Reset Password

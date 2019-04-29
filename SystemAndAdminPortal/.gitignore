@@ -1,0 +1,13 @@
+# Bad Mac OS/X files
+.DS_Store
+
+# Bad Windows files
+Desktop.ini
+Thumbs.db
+
+# Generated files which should not be on the repository
+.vagrant
+*.log
+node_modules
+www/app.js
+www/app.js.map

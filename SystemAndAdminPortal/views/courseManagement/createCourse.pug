@@ -1,0 +1,45 @@
+//-
+//- createCourse.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout.pug
+
+block title
+	title Create New Course
+
+block content
+
+	//- --------------------------------- Mini navigation buttons to previous pages ------------------------------------------- -//
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/courseManagement')  Course Management 
+		img(src='/assets/img/arrow.gif')
+		a(href='')  Create New Course
+
+	h1.o-header__title Create New Course
+
+	//- --------------------------------- Form to add Courses ------------------------------------------- -// 
+
+
+	form(action='/admin/createCourse/req',enctype="multipart/form-data",method='post')
+
+		//- ---- Course name input ---- -//
+
+		label(for='newCourseName') Course Name
+		input(id='newCourseName',name='newCourseName',type='text',required='',placeholder='ex. Callaghan')
+		
+		br
+		br
+		br
+		
+		//- ---- Submits form ---- -//
+
+		input(id='submit',type='submit' value='Submit')
+
+

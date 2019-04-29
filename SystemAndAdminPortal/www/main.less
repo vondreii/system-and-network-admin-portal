@@ -1,0 +1,1259 @@
+/**
+ * Major Project Styles
+ */
+
+/* -----------------------------------------------------------------------------
+
+  FONTS
+  
+----------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/oxygen/oxygen-v5-latin-300.eot");
+  src: local("Oxygen Light"), local("Oxygen-Light"), url("../fonts/oxygen/oxygen-v5-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-300.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-300.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-300.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-300.svg#Oxygen") format("svg");
+}
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/oxygen/oxygen-v5-latin-regular.eot");
+  src: local("Oxygen"), local("Oxygen-Regular"), url("../fonts/oxygen/oxygen-v5-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-regular.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-regular.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-regular.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-regular.svg#Oxygen") format("svg");
+}
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/oxygen/oxygen-v5-latin-700.eot");
+  src: local("Oxygen Bold"), local("Oxygen-Bold"), url("../fonts/oxygen/oxygen-v5-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/oxygen/oxygen-v5-latin-700.woff2") format("woff2"), url("../fonts/oxygen/oxygen-v5-latin-700.woff") format("woff"), url("../fonts/oxygen/oxygen-v5-latin-700.ttf") format("truetype"), url("../fonts/oxygen/oxygen-v5-latin-700.svg#Oxygen") format("svg");
+}
+/* -----------------------------------------------------------------------------
+
+  BOX SIZING RESET
+  
+----------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+/* -----------------------------------------------------------------------------
+
+  ROOT ELEMENTS
+  
+----------------------------------------------------------------------------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: lightgray;
+}
+
+body {
+  color: #6d6d6d;
+  background-color: #fff;
+  font-family: "Oxygen", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* -----------------------------------------------------------------------------
+
+  HEADING ELEMENTS
+  
+----------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3b3b3b;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-left: 20px;
+}
+
+.loginHeading {
+  color: white
+}
+
+/* -----------------------------------------------------------------------------
+
+  TEXT ELEMENTS
+  
+----------------------------------------------------------------------------- */
+a {
+  color: #28aadc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00648c;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+/* -----------------------------------------------------------------------------
+
+  MEDIA ELEMENTS
+  
+----------------------------------------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -----------------------------------------------------------------------------
+
+  WRAPPER OBJECT
+  
+----------------------------------------------------------------------------- */
+.o-wrapper {
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+}
+
+/* -----------------------------------------------------------------------------
+
+  CONTAINER OBJECTS
+  
+----------------------------------------------------------------------------- */
+.o-container {
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 960px;
+}
+
+@media all and (min-width: 480px) {
+  .o-container {
+    padding: 0 24px;
+  }
+}
+@media all and (min-width: 720px) {
+  .o-container {
+    padding: 0 48px;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  HEADER OBJECT
+  
+----------------------------------------------------------------------------- */
+.o-header {
+  margin: 0;
+  padding: 0;
+
+}
+
+.o-header-nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+
+  background: @sidebar-background-color; // For browsers that do not support gradients     
+  background: -webkit-linear-gradient(bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); // For Safari 5.1 to 6.0 
+  background: -o-linear-gradient(bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); // For Opera 11.1 to 12.0 
+  background: -moz-linear-gradient(bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); // For Firefox 3.6 to 15 
+  background: linear-gradient(to bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); //For chrome or other
+
+  //The space in the between the 2 Links in the header
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  
+}
+
+#o-header-menu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: solid 5px rgb(10,10,15);
+  background-color: rgb(10,10,15);
+}
+
+.o-header-nav__link {
+  padding: 5px 20px;
+  color: #fff;
+}
+
+.o-header-menu__link {
+  color: #fff;
+  border-bottom: solid 3px rgb(10,10,15);
+  margin-left: 60px;
+}
+
+.o-header-nav__link:hover {
+  color: darkgray;
+  cursor: pointer;
+  text-decoration:none;
+}
+
+.o-header-menu__link:hover {
+  color: white;
+  border-bottom: solid 2px gray;
+  cursor: pointer;
+  text-decoration:none;
+}
+
+.o-header__title {
+  margin: 20px;
+  padding: 0;
+  padding-top: 10px;
+  color: rgb(15,15,25);
+  font-size: 28px;
+  font-weight: 300;
+}
+
+@media all and (min-width: 480px) {
+  .o-header__title {
+    margin-left: 20px;
+    margin-top: 50px;
+    font-size: 42px;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  MAIN OBJECT
+  
+----------------------------------------------------------------------------- */
+.o-main {
+  /**/
+}
+
+#main {
+  height: 100%;
+}
+
+/* -----------------------------------------------------------------------------
+
+  SUB-NAVIGATION OBJECT
+  
+----------------------------------------------------------------------------- */
+.o-sub-nav {
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+
+.o-sub-nav__items {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.o-sub-nav__item {
+  margin: 0;
+  padding: 4px;
+}
+
+.o-sub-nav__link {
+  display: block;
+  margin: 0;
+  padding: 4px 24px;
+  border: solid 2px #67b5d1;
+}
+
+.o-sub-nav__link:hover,
+.o-sub-nav__item.active .o-sub-nav__link {
+  color: #fff;
+  background-color: #67b5d1;
+}
+
+@media all and (min-width: 720px) {
+  .o-sub-nav {
+    margin: 0 0 48px 0;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  FOOTER OBJECT
+  
+----------------------------------------------------------------------------- */
+.o-footer {
+  padding: 12px 0;
+  text-align: center;
+}
+
+@media all and (min-width: 480px) {
+  .o-footer {
+    padding: 24px 0;
+  }
+}
+@media all and (min-width: 720px) {
+  .o-footer {
+    padding: 48px 0;
+  }
+}
+/* -----------------------------------------------------------------------------
+
+  SLIDE AND PUSH MENUS COMPONENT
+  
+----------------------------------------------------------------------------- */
+/**
+ * Menu overview.
+ */
+.c-menu {
+  position: fixed;
+  z-index: 200;
+  background-color: #67b5d1;
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+}
+
+.c-menu__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Left and right menus
+ *
+ * Slide and push menus coming in from the left and right inherit a lot of
+ * common styles. We'll start each of them off by doing up the common styles
+ * for each version, followed by individual styles.
+ *
+ * The various versions are governed by modifier classes.
+ */
+/**
+ * Common modifiers for left/right menus.
+ */
+.c-menu--slide-left,
+.c-menu--slide-right,
+.c-menu--push-left,
+.c-menu--push-right {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+@media all and (min-width: 320px) {
+  .c-menu--slide-left,
+  .c-menu--slide-right,
+  .c-menu--push-left,
+  .c-menu--push-right {
+    width: 300px;
+  }
+}
+
+.c-menu--slide-left .c-menu__item,
+.c-menu--slide-right .c-menu__item,
+.c-menu--push-left .c-menu__item,
+.c-menu--push-right .c-menu__item {
+  display: block;
+  text-align: center;
+  border-top: solid 1px #b5dbe9;
+  border-bottom: solid 1px #3184a1;
+}
+.c-menu--slide-left .c-menu__item:first-child,
+.c-menu--slide-right .c-menu__item:first-child,
+.c-menu--push-left .c-menu__item:first-child,
+.c-menu--push-right .c-menu__item:first-child {
+  border-top: none;
+}
+.c-menu--slide-left .c-menu__item:last-child,
+.c-menu--slide-right .c-menu__item:last-child,
+.c-menu--push-left .c-menu__item:last-child,
+.c-menu--push-right .c-menu__item:last-child {
+  border-bottom: none;
+}
+
+.c-menu--slide-left .c-menu__link,
+.c-menu--slide-right .c-menu__link,
+.c-menu--push-left .c-menu__link,
+.c-menu--push-right .c-menu__link {
+  display: block;
+  padding: 12px 24px;
+  color: #fff;
+}
+
+.c-menu--slide-left .c-menu__close,
+.c-menu--slide-right .c-menu__close,
+.c-menu--push-left .c-menu__close,
+.c-menu--push-right .c-menu__close {
+  display: block;
+  padding: 12px 24px;
+  width: 100%;
+}
+
+/**
+ * Slide/Push Menu Left.
+ */
+.c-menu--slide-left,
+.c-menu--push-left {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+@media all and (min-width: 320px) {
+  .c-menu--slide-left,
+  .c-menu--push-left {
+    -webkit-transform: translateX(-300px);
+        -ms-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+}
+
+.c-menu--slide-left.is-active,
+.c-menu--push-left.is-active {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+/**
+ * Slide/Push Menu Right.
+ */
+.c-menu--slide-right,
+.c-menu--push-right {
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+@media all and (min-width: 320px) {
+  .c-menu--slide-right,
+  .c-menu--push-right {
+    -webkit-transform: translateX(300px);
+        -ms-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+}
+
+.c-menu--slide-right.is-active,
+.c-menu--push-right.is-active {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+/**
+ * Top and bottom menus
+ *
+ * Slide and push menus coming in from the top and bottom inherit a lot of
+ * common styles. We'll start each of them off by doing up the common styles
+ * for each version, followed by individual styles.
+ *
+ * The various versions are governed by modifier classes.
+
+/**
+ * Common modifiers for top/bottom menus
+ */
+.c-menu--slide-top,
+.c-menu--slide-bottom,
+.c-menu--push-top,
+.c-menu--push-bottom {
+  vertical-align: middle;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  overflow-x: scroll;
+}
+
+.c-menu--slide-top .c-menu__items,
+.c-menu--slide-bottom .c-menu__items,
+.c-menu--push-top .c-menu__items,
+.c-menu--push-bottom .c-menu__items {
+  display: inline-block;
+  text-align: center;
+}
+
+.c-menu--slide-top .c-menu__item,
+.c-menu--slide-bottom .c-menu__item,
+.c-menu--push-top .c-menu__item,
+.c-menu--push-bottom .c-menu__item {
+  display: inline-block;
+  line-height: 60px;
+}
+
+.c-menu--slide-top .c-menu__link,
+.c-menu--slide-bottom .c-menu__link,
+.c-menu--push-top .c-menu__link,
+.c-menu--push-bottom .c-menu__link {
+  display: block;
+  padding: 0 4px;
+  color: #fff;
+}
+
+.c-menu--slide-top .c-menu__close,
+.c-menu--slide-bottom .c-menu__close,
+.c-menu--push-top .c-menu__close,
+.c-menu--push-bottom .c-menu__close {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 0 24px;
+  height: 60px;
+  line-height: 60px;
+}
+
+/**
+ * Slide/Push Menu Top.
+ */
+.c-menu--slide-top,
+.c-menu--push-top {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(-60px);
+      -ms-transform: translateY(-60px);
+          transform: translateY(-60px);
+}
+
+.c-menu--slide-top.is-active,
+.c-menu--push-top.is-active {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/**
+ * Slide/Push Menu Bottom.
+ */
+.c-menu--slide-bottom,
+.c-menu--push-bottom {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateY(60px);
+      -ms-transform: translateY(60px);
+          transform: translateY(60px);
+}
+
+.c-menu--slide-bottom.is-active,
+.c-menu--push-bottom.is-active {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+/**
+ * Wrapper states.
+ *
+ * Various wrapper states occur depending on if a menu is pushing into view, in
+ * which case, the wrapper has to be pushed by the respective distance.
+ */
+.o-wrapper.has-push-left {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+@media all and (min-width: 320px) {
+  .o-wrapper.has-push-left {
+    -webkit-transform: translateX(300px);
+        -ms-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+}
+
+.o-wrapper.has-push-right {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+@media all and (min-width: 320px) {
+  .o-wrapper.has-push-right {
+    -webkit-transform: translateX(-300px);
+        -ms-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+}
+
+.o-wrapper.has-push-top {
+  -webkit-transform: translateY(60px);
+      -ms-transform: translateY(60px);
+          transform: translateY(60px);
+}
+
+.o-wrapper.has-push-bottom {
+  -webkit-transform: translateY(-60px);
+      -ms-transform: translateY(-60px);
+          transform: translateY(-60px);
+}
+
+/**
+ * Body states.
+ *
+ * When a menu is active, we want to hide the overflows on the body to prevent
+ * awkward document scrolling.
+ */
+body.has-active-menu {
+  overflow: hidden;
+}
+
+/**
+ * Close button resets.
+ */
+.c-menu__close {
+  color: #fff;
+  background-color: #3184a1;
+  font-size: 14px;
+  border: none;
+  box-shadow: none;
+  border-radius: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.c-menu__close:focus {
+  outline: none;
+}
+
+/* -----------------------------------------------------------------------------
+
+  MASK COMPONENT
+  
+----------------------------------------------------------------------------- */
+.c-mask {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+          transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+
+.c-mask.is-active {
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  -webkit-transition: opacity 0.3s;
+          transition: opacity 0.3s;
+}
+
+/* -----------------------------------------------------------------------------
+
+  BUTTONS
+  
+----------------------------------------------------------------------------- */
+.c-buttons, button, a {
+  text-align: left;
+}
+
+.c-button, button {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  background: none;
+  font-size: 14px;
+  box-shadow: none;
+  border-radius: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+}
+
+.c-button:focus, button:focus {
+  outline: none;
+}
+
+.c-button:disabled, button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+
+/* -----------------------------------------------------------------------------
+
+  CARBON AD COMPONENT
+  
+----------------------------------------------------------------------------- */
+#carbonads {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  z-index: 1000;
+  padding: 24px 12px 12px 12px;
+  width: 154px;
+  background-color: #fff;
+  line-height: 1.1;
+  border: solid 1px #e7e7e7;
+}
+
+.carbon-wrap {
+  display: block;
+  margin: 0 0 4px 0;
+}
+
+.carbon-img {
+  display: block;
+  margin: 0 0 4px 0;
+  padding: 0;
+  width: 130px;
+  height: 100px;
+}
+
+.carbon-text {
+  color: #818181;
+  font-size: 12px;
+}
+
+.carbon-poweredby {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.carbonad__close {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 12px;
+  height: 24px;
+  font-size: 11px;
+  line-height: 24px;
+}
+
+@media all and (max-width: 660px) {
+  #carbonads {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro');
+@primary-font-family: 'Source Sans Pro', sans-serif;
+@secondary-font-family: 'Open Sans', sans-serif;
+
+// Main content
+@primary-background-color: #F0F0F0;
+@primary-text-color: #222;
+
+// Sidebar
+@sidebar-background-color:#3A4F63;
+@sidebar-text-color: #fff;
+
+// Footer
+@footer-background-color: rgb(10,10,15);
+@footer-text-color: #fff;
+
+
+// Buttons
+@button-main-background-color: #3789e8;
+@button-main-text-color: #fff;
+
+.headerWrapper {
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
+}
+
+.headerBar {
+  margin: 0;
+  padding: 0;
+
+
+}
+
+
+
+
+.core-button(@color) {
+  appearance: none;
+  background-color: @color;
+  border: 0;
+  border-bottom: 2px darken(@color, 20%) solid;
+  border-radius: 20px;
+  color: @button-main-text-color;
+  cursor: pointer;
+  font-family: @secondary-font-family;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 0;
+  padding: 20px;
+  width: 140px;
+
+  &:hover {
+    background-color: darken(@color, 10%);
+    border-bottom-color: darken(@color, 30%);
+  }
+}
+
+
+// Common styles
+body {
+  background-color: @primary-background-color;
+  color: @primary-text-color;
+  font-family: @secondary-font-family;
+  height: 100%;
+  margin: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+p {
+  margin: 20px;
+}
+
+header {
+  
+  color: @primary-background-color;
+  font-family: @primary-font-family;
+  height: 54px;
+  left: 0;
+  line-height: 40px;
+  position: relative;
+  top: 0;
+  width: 100%;
+
+  img {
+    float: left;
+    height: 24px;
+    padding: 8px 10px 0 16px;
+  }
+
+  div {
+    &:first-child {
+      float: left;
+    }
+    &:last-child {
+      cursor: pointer;
+      float: right;
+      padding-right: 16px;
+
+      .dropdown {
+        background-color: @sidebar-background-color;
+        color: @sidebar-text-color;
+        display: none;
+        padding: 0;
+        position: fixed;
+        right: 0;
+        text-align: center;
+        top: 40px;
+        width: 80px;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+
+      &:hover {
+        .dropdown {
+          display: block;
+        }
+      }
+    }
+
+    .arrow-down {
+      border-left: 5px transparent solid;
+      border-right: 5px transparent solid;
+      border-top: 5px white solid;
+      height: 0;
+      margin: 18px 0 0 10px;
+      padding: 0;
+      width: 0;
+    }
+  }
+}
+
+#layout {
+  display: flex;
+  height: 100%;
+  margin:0px;
+  background-color: lightgray;
+
+  #sidebar {
+    flex: 0 0 400px;
+    height: 100%;
+   
+
+    box-shadow: 20px 20px 8px 0 rgba(0, 0, 0, 0.2), 0 20px 8px 0 rgba(0, 0, 0, 0.19);
+  
+    background: @sidebar-background-color; // For browsers that do not support gradients     
+    background: -webkit-linear-gradient(bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); // For Safari 5.1 to 6.0 
+    background: -o-linear-gradient(bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); // For Opera 11.1 to 12.0 
+    background: -moz-linear-gradient(bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); // For Firefox 3.6 to 15 
+    background: linear-gradient(to bottom, lighten(rgb(10,10,15), 5%), rgb(10,10,15)); //For chrome or other
+    
+
+    img {
+      margin: 0px;
+    }
+
+    h2 {
+      color: gray;
+      padding-bottom: 10px;
+    }
+
+    a {
+      color: #fff;
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: .3s background-color ease;
+
+      &:hover {
+        color: lightgray;
+        background-color: rgb(10,10,15);
+      }
+    }
+
+    button {
+      transition: .2s background-color ease;
+
+      &:hover {
+        background-color: darken(@sidebar-background-color, 10%);
+      }
+    }
+  }
+
+  #content {
+    padding: 10px 40px;
+    width: 100%;
+  }
+}
+
+button {
+  color: black;  
+}
+
+.addlab, .del{
+  color: black; 
+  text-align: center;
+  border: solid 1px black; 
+  width: 150px;
+}
+
+#createOrDelete{
+  padding-left: 30px;
+}
+
+#uploadMenuElement, #deleteMenuElement, #vmMenuElement, #uploadFeedbackScript {
+  display: inline-block;
+  margin-left: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+#uploadMenuElement a, #deleteMenuElement a, #vmMenuElement a, #uploadNewLabElement a, #uploadFeedbackScript a{
+  color: rgb(15,15,25);
+  padding: 10px;
+}
+
+#adminOptions div:hover, #uploadNewLabElement:hover, #uploadMenuElement a:hover, #deleteMenuElement a:hover, #uploadFeedbackScript a:hover  {
+  background-color: silver;
+  border-radius: 25px;
+}
+
+#adminMainMenu a {
+  color: @sidebar-background-color;
+}
+
+#adminMenuElement:hover {
+  background-color: lightgray;
+}
+
+.form-group {
+  margin-left: 30px; 
+  margin-right: 400px;
+}
+
+#addUserButton input {
+  width: 70%;
+}
+
+#addUserButton input:hover {
+  background-color: darken(@sidebar-background-color, 10%);
+}
+
+footer {
+  background-color: @footer-background-color;
+  bottom: 0;
+  color: @footer-text-color;
+  font-size: 14px;
+  height: 48px;
+  left: 0;
+  line-height: 48px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  user-select: none;
+}
+
+footer:hover {
+  color: lightgray;
+}
+
+#vm-container-space {
+  padding-bottom: 100px;  
+}
+
+#vm-container {
+  text-align: left;
+  width: 250px;
+}
+
+#vm-container div {
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: 30px;
+  height: 40px;
+  width: 900px;
+  border: 1px solid #dddddd;
+}
+
+#vm-container div:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#vm-container a:first-child {
+  margin-left: 300px;    
+} 
+
+#vm-container a {
+  color: black;
+  padding: 10px;
+  height: 40px;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  width: 200px;
+  margin-top: -35px;
+} 
+
+#vm-container a:hover {
+  background-color: darkgray;
+  border-radius: 10px;
+}
+
+.virtualMachinesPage {
+  background-color: red; 
+}
+
+#machineOne, #machineTwo, #machineThree  {
+  padding: 10px;
+  border-radius: 20px; 
+  margin-bottom: 30px;
+  background-color: lightgray;
+}
+
+
+#machineOne button, #machineTwo button, #machineThree button {
+  width: 130px;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#machineOne p, #machineTwo p, #machineThree p {
+  margin-left: 50px;
+}
+
+#machineOne button:first-child, #machineTwo button:first-child, #machineThree button:first-child {
+  margin-left: 190px;
+}
+
+#machineOne button, #machineTwo button, #machineThree button {
+  height: 30px;
+  padding: 0px;
+  color: black;
+  display: inline-block;
+}
+
+/*
+#machineOne:hover, #machineTwo:hover, #machineThree:hover {
+  background-color: darken(lightgray, 10%);
+}
+*/
+
+.container-fluid {
+  width: 300px;
+}
+
+#winDeskOne, #winDeskTwo, #winServer  {
+  width: 700px; 
+  text-align: center;
+}
+
+.container-fluid1, .container-fluid2, .container-fluid3 {
+  width: 700px;
+  text-align: center;
+  margin-left: 40px;
+  border-bottom: solid 1px gray;
+}
+
+#vmName-container {
+  width: 150px;
+  margin-left: 40px;
+}
+
+.container-fluid, #vm-container, #vmName-container {
+  display:inline-block;
+} 
+
+table {
+  margin-left: 20px;
+  color: black;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+}
+
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+table td {
+  padding: 10px;
+}
+
+td.name {
+  padding-right: 200px;
+}
+
+td.data {
+  text-align: right;
+  padding-left: 200px;
+}
+
+td.space {
+  border: none;
+  background-color: lightgray;
+}
+
+td.button {
+  .core-button(#3A4F63);
+  border-radius: 4px;
+  height: 25px;
+  padding: 16px;
+  width: 80px;
+  position: absolute;
+}
+
+td.button a {
+  color: white;
+}
+
+.inline {
+  display: inline-block;  
+  margin-left: 20px;
+}
+
+#weekly-container {
+  background-color: #e4e4e4;
+  border: 1px #ddd solid;
+  border-bottom-color: #bbb;
+  border-bottom-width: 2px;
+  border-radius: 10px;
+  display: flex;
+  float: right;
+  margin-top: 100px;
+  width: 25%;
+  height: 50%
+}
+
+
+#weekly-container div {
+  display: block
+}
+
+.deployButton, .unDeployButton {
+  width: 120px;
+  padding: 0;
+  padding-top: -30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px #888888;
+}
+
+.deployButton {
+  background-color: #60CA41;
+  margin-left: 160px;
+}
+
+.deployButton:hover {
+  background-color: darken(#60CA41, 10%);
+}
+
+.unDeployButton {
+  background-color: #F72F2F;
+  margin-left: 30px;
+}
+
+.unDeployButton:hover {
+  background-color: darken(#F72F2F, 3%);
+}
+
+.deployButton, break {
+  display: inline-block;
+}
+
+.display {
+  padding: 6px;
+}
+
+.break {
+  padding: 8px;
+}
+
+#backButton {
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: -35px;
+
+  a {
+    text-decoration: none;  
+    color: black;
+  }
+
+  a:hover {
+    border-bottom: solid 2px black;
+  }
+}
+
+
+// Specific styles
+@import "styles/lab.less";
+@import "styles/login.less";

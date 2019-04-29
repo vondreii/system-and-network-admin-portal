@@ -1,0 +1,38 @@
+//-
+//- resetlayout.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+doctype html
+html(lang='en')
+	head
+		block title
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(rel='stylesheet', href='/main.css')
+		script(src='/app.js')
+					
+	body#main
+
+		div#layout
+			div#sidebar
+
+			div#content
+				.container
+					.script
+						if messages.error
+							.alert.alert-danger
+								div= messages.error
+						if messages.info
+							.alert.alert-info
+								div= messages.info
+						if messages.success
+							.alert.alert-success
+								div= messages.success
+				block content
+	
+	footer &#169; The University of Newcastle, 2016

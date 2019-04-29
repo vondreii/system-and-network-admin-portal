@@ -1,0 +1,186 @@
+//-
+//- layout.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+doctype html
+html(lang='en')
+	head
+		block title
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='author' content='Sharlene Von Drehnen')
+		meta(name='description' content='Online access to Virtual Machines for students studying INFT courses at the University of Newcastle, Australia')
+		link(rel='stylesheet', href='/main.css')
+		link(rel='stylesheet', href='/stylesheets/forms.css')
+		script(src='/app.js')
+
+	//- Includes the header and the sidebar.. Everything in the middle is displayed using external .pug pages
+
+	body#main
+
+		//- ------------------ Top Navigation Bar ------------------ -//
+
+		#o-wrapper.o-wrapper
+			header.headerBar
+				nav.o-header-nav
+
+					//- ----------- UoN Logo ----------- -//
+					a.o-header-nav__link(href='#')
+						img(src='/assets/img/uonseahorse.png')
+						|  Systems &amp; Network Admin Portal
+
+					//- ----------- Logout Option ----------- -//
+					a.o-header-nav__link(href='/logout')
+						|  Logout
+						i.fa.fa-star
+
+				//- ----------- Navigation Pane (To different pages) ----------- -//	
+				nav#o-header-menu
+
+					script.	
+
+						var navigation = document.getElementById('o-header-menu');
+							
+						//- ----------- If the user is Admin, a different navigation pane is displayed ----------- -//	
+
+						if(!{userType}=='admin'){
+
+
+							//- ----------- Admin Dashboard (adminDashboard.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/admin'
+							newLink.innerHTML = 'Admin Dashboard';
+							navigation.appendChild(newLink);
+
+
+							//- ----------- Course Management (courseManagement.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/courseManagement'
+							newLink.innerHTML = 'Course Management';
+							navigation.appendChild(newLink);
+
+
+							//- ----------- Lab Management (lab.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/lab'
+							newLink.innerHTML = 'Lab Management';
+							navigation.appendChild(newLink);
+
+
+							//- ----------- Virtual Machines Management (adminvmManagement.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/vms'
+							newLink.innerHTML = 'VM Management';
+							navigation.appendChild(newLink);
+
+
+							//- ----------- User Management (userManagement.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/userManagement'
+							newLink.innerHTML = 'User Management';
+							navigation.appendChild(newLink);
+						}
+
+						//- ----------- If the User is a Student, a different navigation pane is also displayed ----------- -//
+
+						else{
+							
+							//- ----------- Student Dashboard (studentDashboard.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/studentDashboard'
+							newLink.innerHTML = 'Dashboard';
+							navigation.appendChild(newLink);
+
+
+							//- ----------- Labs (lab.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/lab'
+							newLink.innerHTML = 'My Labs';
+							navigation.appendChild(newLink);
+
+
+							//- ----------- Virtual Machines (Student View) (virtualMachinesStudentView.pug) ----------- -//	
+
+							var newLink = document.createElement("a")
+							newLink.setAttribute('class', 'o-header-menu__link');
+							newLink.href ='/virtualMachines'
+							newLink.innerHTML = 'My Virtual Machines';
+							navigation.appendChild(newLink);
+						}
+
+					//- ----------- User Profile ----------- -//	
+
+					//- Both User and Admin have access to their profile
+
+					a.o-header-menu__link(href='/userProfile')
+						|  My Profile
+
+
+
+		//- ----------- SideBar with the 'QuickLinks' heading ----------- -//	
+
+		div#layout
+			div#sidebar
+				br
+
+				//- Both users can view the link to Blackboard
+
+				#c-buttons.c-buttons
+					img(src='/assets/img/Library.jpg')
+					h2.quickLinks Quick Links
+					a(href='https://uonline.newcastle.edu.au/webapps/login/?action=relogin') Blackboard
+				
+				br
+				br
+
+			div#content
+				.script
+					if messages.error
+						.alert.alert-danger
+							div= messages.error
+					if messages.info
+						.alert.alert-info
+							div= messages.info
+					if messages.success
+						.alert.alert-success
+							div= messages.success
+				block content
+		
+
+		script.	
+
+			//- Only the admin user can view the link to Azure Portal
+
+			if(!{userType}=='admin'){
+				var navigation = document.getElementById('c-buttons');
+				var newLink = document.createElement("a")
+				newLink.href ='https://login.microsoftonline.com/common/oauth2/authorize?resource=https%3a%2f%2fmanagement.core.windows.net%2f&response_mode=form_post&response_type=code+id_token&scope=user_impersonation+openid&state=OpenIdConnect.AuthenticationProperties%3d1M6q2RdfpRzMI8d7hASDpvthzCAswLWx4C0TG64AMUJYkpHViKDXt2Kkdz1GaJGZ1PJooOqAz9TXFkYers-QUrYtHuY3qQFV-6zmvjol-GZRvz18UtdLqTB01rIUF1X_neZ90Hx3QXGKr5S2eEGWafzOhOVi3cAsaOPeOUBPK8Xra3rwoyUqe4J7VuQHDeIxvpQl9mpltttvT146YjctYeaK8ew&nonce=636172871501825817.NjlhODg4MzUtY2RmYi00ZDNlLWI1Y2YtZjNiMDA1ODAwZDI1YWQwNDk1ZWMtZmM4NS00MTNhLWJlYjktNjg1MWMyOWVjNzRl&client_id=c44b4083-3bb0-49c1-b47d-974e53cbdf3c&redirect_uri=https%3a%2f%2fportal.azure.com%2fsignin%2findex%2f%3fsignIn%3d1%26cdnIndex%3d2&site_id=501430'
+				newLink.innerHTML = 'Azure Portal';
+				navigation.appendChild(newLink);
+			}
+
+
+		
+	footer &#169; The University of Newcastle, 2016
+
+
+	

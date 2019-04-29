@@ -1,0 +1,137 @@
+//-
+//- virtualMachinesStudentView.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout.pug
+
+block title
+    title Lab
+    // Bootstrap Core CSS
+    link(href='../stylesheets/bootstrap.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='../stylesheets/simple-sidebar.css', rel='stylesheet')
+    link(rel='../stylesheet', type='text/css', href='/stylesheets/vmbarstyle.css')
+
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+    // script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    // script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+
+block content
+
+  //- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+  
+  div#backButton
+
+    img(src='/assets/img/arrow.gif')
+    a(href='')  Virtual Machines   
+
+  h1.o-header__title Virtual Machines
+  p You have 2 Client Machines and 1 Server Machine available to use for this lab. To start using a Virtual Machine:  
+  p Step 1: Select "Start" and wait until your Virtual Machine loads.
+  p Step 2: Once loaded, select "connect" and your Virtual Machine will open in another tab.* 
+  p Your Virtual Machines for this course:
+  br
+
+
+  // ------------------------- VIRTUAL MACHINE 1 ---------------------------//
+
+  div.container-fluid1
+    
+  script(src='/labpage.js')
+  script.
+    var obj = !{vms};
+    var values = obj.value;
+    html:values;
+    var vmContainer =$('.container-fluid1');
+
+    var vm = $('<h5>',{
+        class:'vm',
+        html:values[0].name 
+    }); 
+
+    vmContainer.append(vm);
+
+
+  #container-fluid
+        #machineOne
+            button.btn-primary(onclick='startDeskOne()') Start VM 
+            button.btn-danger(onclick='stopDeskOne()') Stop VM
+            button#connectOne.btn-success(onclick='connectDeskOne()', disabled='true') Connect VM
+            p#winDeskOne Status: Unknown
+            br
+
+
+  // ------------------------- VIRTUAL MACHINE 2 ---------------------------//             
+
+  div.container-fluid2
+  script.
+    var vmContainer =$('.container-fluid2');
+    var vm = $('<h5>',{
+        class:'vm',
+        html:values[1].name 
+    }); 
+
+    vmContainer.append(vm);
+
+  #container-fluid
+        #machineTwo
+            button.btn-primary(onclick='startDeskTwo()') Start VM
+            button.btn-danger(onclick='stopDeskTwo()') Stop VM
+            button#connectTwo.btn-success(onclick='connectDeskTwo()',disabled='true') Connect VM
+            p#winDeskTwo Status: Unknown
+            br
+
+
+  // ------------------------- VIRTUAL MACHINE 3 ---------------------------//
+
+  div.container-fluid3
+
+  script.
+    var vmContainer =$('.container-fluid3');
+    var vm = $('<h5>',{
+        class:'vm',
+        html:values[2].name 
+    }); 
+
+    vmContainer.append(vm);
+
+  #container-fluid
+        #machineThree
+            button.btn-primary(onclick='startServer()') Start VM
+            button.btn-danger(onclick='stopServer()') Stop VM
+            button#connectServ.btn-success(onclick='connectServer()',disabled='true') Connect VM
+            p#winServer Status: Unknown
+            br
+
+  p *Every Virtual Machine has an automatic shutdown timer of 2 hours and 30 minutes. All work on the Virtual Machines are saved automatically.   
+
+  p Please remember to stop your Virtual Machines when you have finished using them. If you fail to do so, the Virtual Machine's timer will stop the VM automatically. 
+  
+  br
+  br
+  br
+              
+  script(src='../js/jquery.js')
+  script(src='../js/bootstrap.min.js')
+  script(src='../js/vmManagement.js')
+
+  script.
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+  
+  script.
+      var srclink = #{link};
+      var pdf = !{pdf}
+      document.getElementById("pdfobject").data=srclink+pdf
+
+  script.
+    var username = !{user};
+        

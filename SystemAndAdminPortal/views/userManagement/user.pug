@@ -1,0 +1,93 @@
+//-
+//- user.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block content
+
+  //- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+  div#backButton
+
+    img(src='/assets/img/arrow.gif')
+    a(href='')  User Profile    
+
+  div.inline
+    img(src='/assets/img/profile_small.png')
+  div.inline
+    h1.o-header__title #{user.displayName}
+  br
+
+  //- ----------------------- Users Account Information -------------------------------- -// 
+
+  h3 Account Information
+  table#tblr
+      tr
+        td.name First Name
+        td.data #{user.firstName}
+      tr
+        td.name Last Name
+        td.data #{user.lastName}
+      tr
+        td.name Display Name
+        td.data #{user.displayName}
+        td.space
+        td.button 
+          a(href='#') 
+            | Change     
+
+      tr
+        td.name Lab Date and Time
+        td.data #{user.labDay}, #{user.labTime} 
+
+      tr
+        td.space
+        td.space
+      tr
+        td.space
+        td.space
+
+      script.
+         
+        // ---------- If the user is a Student, they have an additional field (their enrolled course) ---------- //
+
+        if(!{userType}!='admin'){
+            var table = document.getElementById('tblr');
+
+            var newRow = document.createElement("tr");
+            table.appendChild(newRow);
+
+            var tdName = document.createElement("td");
+            tdName.setAttribute('class', 'name');
+            tdName.innerHTML = 'Enrolled Course';
+            newRow.appendChild(tdName);
+
+            var tdData = document.createElement("td");
+            tdData.setAttribute('class', 'data');
+            tdData.innerHTML = "#{user.labNo}";
+            newRow.appendChild(tdData);
+        }
+          
+      
+      tr
+        td.name Username
+        td.data #{user.username}
+
+      tr
+        td.name Password
+        td.data ********
+        td.space 
+        td.button 
+          a(href='/changepassword') 
+            | Change
+
+  br
+  br
+  br
+
+  pre #{userProfile}

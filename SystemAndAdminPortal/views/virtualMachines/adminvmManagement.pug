@@ -1,0 +1,92 @@
+//-
+//- adminvmManagement.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block content
+
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='')  Virtual Machine Management
+
+	//- -------- Introduction Message for this page -------- -//
+
+	h1.o-header__title Virtual Machines Management
+	p Listed below are the Virtual Machines that are currently created on the current resource group.
+	p Please note that Virtuals Machines take some time to delete. Refresh the page to see if the Virtual machine is still available. If after 15 minutes the Virtual Machine is still there click delete again.
+
+
+	//- -------- Option for Admin to deallocate VMs --------  -//
+
+	div#adminOptions
+		div#vmMenuElement 
+			a(href='/api/deallocateall')
+				img(src='/assets/img/vmWindows1.png')
+				br
+				button(type='submit') Deallocate All VMs
+
+		//- -------- Option for Admin to upload a vhd --------  -//
+
+		//- Currently the group that the vhd is uploading to is the old azurevmproject account - cannot find where to change this to current account
+
+		div#vmMenuElement
+			a(href='/admin/upload') 
+				img(src='/assets/img/vhd.png')
+				br
+				button(type='submit') Upload vhd
+
+	br
+
+	//- ------------------------ List of Virtual Machines ------------------------ -//
+
+	// View comments in lab.pug - Same code only with different object
+
+	h2 List of Virtual Machines
+	div#vm-container-space
+		div#vm-container
+		
+	script(src='/labpage.js')
+	script.
+		var obj = !{vms};
+		var values = obj.value;
+		html:values;
+		var vmContainer =$('#vm-container');
+		for(var i in values){
+			var vm = $('<div>',{
+				class:'vm',
+				html:values[i].name
+			});
+			var deletelink = $('<a>', {
+				html: 'Delete',
+				id: 'shutdown'+i,
+				href: '#',
+			});
+					
+			vm.append(deletelink);
+			vm.append("</a>")
+			vmContainer.append(vm);
+		}
+	script.
+		var obj = !{vms};
+		var values = obj.value;
+		for(var i in values){
+			var number = String(i);
+			document.getElementById('shutdown'+number).onclick=(
+				function(opt){
+					return function(){
+						deleteVM(opt)
+					}
+				})(values[i].name);
+		}
+
+		
+		

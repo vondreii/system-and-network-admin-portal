@@ -1,0 +1,26 @@
+//-
+//- userManagement.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block title
+	title User Management
+
+block content
+	h1.o-header__title User Management
+	h2 Manage users on the System and Network Admin Portal
+
+	p //List of Users 
+
+	div#adminOptions
+		div#vmMenuElement 
+			a(href='/admin/adduser')
+				img(src='/assets/img/icon-users.png')
+				br
+				| Add Users
+	

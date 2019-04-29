@@ -1,0 +1,31 @@
+//-
+//- reset.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends resetlayout
+
+//- User fills in a form to reset their password 
+
+block content
+  h1.o-header__title Reset Password
+  form(method='POST')
+    legend Reset Password
+
+    //- New password input 
+    .form-group
+      label(for='password') New Password
+      input.form-control(type='password', name='password', value='', placeholder='New password', autofocus=true)
+
+    //- Confirm Password input
+    .form-group
+      label(for='confirm') Confirm Password
+      input.form-control(type='password', name='confirm', value='', placeholder='Confirm password')
+
+    //- Update Password button
+    .form-group
+      button.btn.btn-primary(type='submit') Update Password

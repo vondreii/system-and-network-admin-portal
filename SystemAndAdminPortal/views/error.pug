@@ -1,0 +1,17 @@
+//-
+//- error.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    UoN Major Project, 2016
+//- Modified:  Sharlene Von Drehnen
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends layout
+
+//- Error message status displayed
+
+block content
+  h1= message
+  h2= error.status
+  pre #{error.stack}

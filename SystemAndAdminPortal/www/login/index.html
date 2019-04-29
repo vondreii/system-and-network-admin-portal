@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>Login : UoN VM Network</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/app.js"></script>
+</head>
+
+<body>
+    <div id="centre-container">
+        <div id="connection-form" class="no-select">
+			<span id="header">Login to a virtual machine</span>
+
+			<label for="ip">IP Address</label>
+			<input type="text" id="ip">
+			<label for="username">Username</label>
+			<input type="text" id="username">
+			<label for="password">Password</label>
+			<input type="password" id="password">
+			<label for="domain">Domain</label>
+			<input type="text" id="domain">
+
+            <input type="button" id="submit" onclick="app.test();" value="Connect">
+		</div>
+    </div>
+</body>
+
+</html>

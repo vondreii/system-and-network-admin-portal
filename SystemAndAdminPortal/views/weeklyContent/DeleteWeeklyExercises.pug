@@ -1,0 +1,92 @@
+//-
+//- DeleteWeeklyExercises.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block title
+	title Lab Deletion page
+
+block content
+	script(src='../js/labpage.js')
+
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/lab')   Labs  
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/weeklyExercises')   Weekly Content  
+
+		img(src='/assets/img/arrow.gif')
+		a(href='')   Delete Weekly Exercises 
+
+	div#lab
+
+		h1.o-header__title Delete Weekly Content
+		p Choose the item/s you would like to delete
+			
+		div#labs-container
+
+		script.
+
+			// ------------------------ Course Object ------------------------ //
+
+				var obj = !{labinfo};							// Creates a new object using labInfo.json
+				var availableLabs = obj.availableLabs;			// AvailableLabs in labinfo.json stores information about weekly content
+				var labsContainer = $('#labs-container');		// A variable created to store the #labs-container div  
+
+
+			// ---------------------- HTML Labs displayed ------------------- //
+
+				for (var i in availableLabs) {					// For every Weekly Content item in labInfo.json
+
+					var lab = $('<div>', {						// Create a div to contain all the weekly contents in 
+						class: 'lab',
+						html: availableLabs[i].labname,			// html for display: display the name of the weekly content item
+					});
+
+					var button = $('<button>', {				// Create a delete button 
+						html: 'Delete',
+						class:'del',
+						id: i
+					});
+
+					var link = $('<a>', {						// Create a link for the delete button do direct somewhere else
+						href: '#',
+					});
+
+					link.append(button);
+					lab.append(link);
+					lab.append("</a>");
+					labsContainer.append(lab);
+				}
+
+		script.
+
+			// ------------------------ Course Object ------------------------ //
+
+				var availableLabs = obj.availableLabs;			// AvailableLabs in labinfo.json stores information about weekly content
+
+				for (var i in availableLabs){					// For every Weekly Content item in labInfo.json
+
+					var number = String(i);
+					document.getElementById(number).onclick=(function(opt){
+						return function(){
+							deleteWeeklyContent(opt);			// Direct to this function in www/js/labpage.js
+						}
+					})(i)
+
+				}
+
+		br
+		br
+
+		
+

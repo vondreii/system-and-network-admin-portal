@@ -1,0 +1,155 @@
+//-
+//- WeeklyExercises.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout.pug
+
+block title
+	title Weekly Content
+
+block content
+
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/lab')  Labs 
+		img(src='/assets/img/arrow.gif')
+		a(href='')  Weekly Content
+
+	div#lab
+
+		script.
+			var headingDiv = document.getElementById('lab');
+
+			var heading1 = document.createElement("h1")
+			heading1.setAttribute('class', 'o-header__title');
+			heading1.innerHTML = 'Weekly Content';
+			headingDiv.appendChild(heading1);
+
+			var para1 = document.createElement("p")
+			para1.innerHTML = 'List of labs available to students:';
+			headingDiv.appendChild(para1);
+	
+		
+		//- --------------- View comments in lab.pug, same code only using different object --------------- -//
+
+		div#labs-container
+		script(src='../js/labpage.js')
+
+		script.
+			var obj = !{labinfo};
+			var availableLabs = obj.availableLabs;
+			var labsContainer = $('#labs-container');
+			for (var i in availableLabs) {
+
+				var lab = $('<div>', {
+					class: 'lab',
+					html: availableLabs[i].labname,
+
+				});
+				var button = $('<button>', {
+					html: 'Open',
+					id: i
+
+
+				});
+				var link = $('<a>', {
+					href: '#',
+
+				});
+
+				link.append(button);
+				lab.append(link);
+				lab.append("</a>");
+				labsContainer.append(lab);
+			}
+
+		script.
+			var availableLabs = obj.availableLabs;
+			for(var i in availableLabs){
+				var number = String(i);
+				document.getElementById(number).onclick = (function(opt){
+					return function(){
+						labrequest(opt);
+					}
+				})(availableLabs[i].filename);
+			}
+
+
+
+		br
+
+		div#uploadMenuElement
+
+		div#deleteMenuElement
+
+		div#uploadFeedbackScript
+			
+		br
+		br
+
+		script.	
+
+			// ----- UPLOAD LAB EXERCISE ----- //
+
+			var uploadOption = document.getElementById('uploadMenuElement');
+			if(!{userType}=='admin'){
+
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/uploadFile.png')
+
+				var newLink = document.createElement("a")
+				newLink.href ='/admin/labupload'
+				newLink.innerHTML = 'Upload Lab Exercise';
+
+				uploadOption.appendChild(imgLink);
+				uploadOption.appendChild(document.createElement("br"));
+				uploadOption.appendChild(newLink);
+			}
+
+			// ----- DELETE LAB EXERCISE ----- //
+
+			var deleteOption = document.getElementById('deleteMenuElement');
+			if(!{userType}=='admin'){
+				
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/deleteFile.png')
+
+				var newLink = document.createElement("a")
+				newLink.href ='/admin/deleteWeeklyExercises'
+				newLink.innerHTML = 'Delete';
+
+				deleteOption.appendChild(imgLink);
+				deleteOption.appendChild(document.createElement("br"));
+				deleteOption.appendChild(newLink);
+
+			}
+
+			// ----- UPLOAD FEEDBACK SCRIPT ----- //
+
+			var uploadFeedback = document.getElementById('uploadFeedbackScript');
+			if(!{userType}=='admin'){
+				
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/feedback.ico')
+
+				var newLink = document.createElement("a")
+				newLink.href ='#'
+				newLink.innerHTML = 'Upload Feedback';
+
+				uploadFeedback.appendChild(imgLink);
+				uploadFeedback.appendChild(document.createElement("br"));
+				uploadFeedback.appendChild(newLink);
+
+			}
+
+
+		
+
+		

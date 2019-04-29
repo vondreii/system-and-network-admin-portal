@@ -1,0 +1,15 @@
+{
+    "APP_SECRET": "aw79ENqkED+RrAhrgxyrUMexx3C2zi7NHyCSdaTzJHM=",
+    "CLIENT_ID": "6a3644e6-7b1a-4c8c-8eb5-c9533d896163",
+    "RESOURCE_GROUP": "inft2031_devTestRG338459", 
+    "SUBSCRIPTION_ID": "21b4efd2-cde0-4d85-ae97-fbf08178cd1b", 
+    "TENANT": "85542c9f-eaa7-4e74-89b5-aadeb181fe60",
+    "WINDOWS_DESK": "https://dinft2031devtest9906.blob.core.windows.net/uploads/Windows10Desk.vhd", 
+    "WINDOWS_SERVER": "https://dinft2031devtest9906.blob.core.windows.net/uploads/Windows10Desk.vhd",  
+    "SUBNET":"/subscriptions/21b4efd2-cde0-4d85-ae97-fbf08178cd1b/resourceGroups/inft2031_devTestRG338459/providers/Microsoft.Network/virtualNetworks/Dtlinft2031_devTest/subnets/Dtlinft2031_devTestSubnet", 
+    "AZURE_STORAGE_ACCOUNT": "dinft2031devtest9906", 
+    "AZURE_STORAGE_ACCESS_KEY": "u1uMs/a9TKZhbDoiPvlH/clS3jsQJn8zysESRSEi5JYNFQRXp3upzgm7SUOSEoeqKbk6YVzXg3zx0jsCEcqgIw==", 
+    "AZURE_STORAGE_CONNECTION_STRING": "DefaultEndpointsProtocol=https;AccountName=dinft2031devtest9906;AccountKey=u1uMs/a9TKZhbDoiPvlH/clS3jsQJn8zysESRSEi5JYNFQRXp3upzgm7SUOSEoeqKbk6YVzXg3zx0jsCEcqgIw==;BlobEndpoint=https://dinft2031devtest9906.blob.core.windows.net/vhds;", 
+    "RESET_EMAIL_ADDRRESS":"azureprojectpwordreset@gmail.com",
+    "RESET_EMAIL_PASSWORD":"turkeysub"
+}

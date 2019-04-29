@@ -1,0 +1,113 @@
+//-
+//- createManagement.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout.pug
+
+block title
+	title Course Management
+
+block content
+
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -//
+	
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='')  Course Management 
+
+	//- --------------------------------- Form used to add user ------------------------------------------- -//
+
+	div#lab
+		h1.o-header__title Course Management
+		//- Method hjdhsskbdwjhdfadskj testing comment 
+		h2 Manage courses on the System and Network Admin Portal
+
+		br
+		div#labs-container
+		script(src='../js/labpage.js')
+
+		//- ------------------------------ Displays all Courses ------------------------------------------- -//
+
+		script.
+			var obj = !{labinfo};
+			var CourseIndex = obj.CourseIndex;
+			var labsContainer = $('#labs-container');
+			for (var i in CourseIndex) {
+
+				var lab = $('<div>', {
+					class: 'lab',
+					html: CourseIndex[i].newCourseName,
+
+				});
+				var button = $('<button>', {
+					html: 'View',
+					id: i
+				});
+
+				var link = $('<a>', {
+					href: '#',
+				});
+
+				link.append(button);
+				lab.append(link);
+				lab.append("</a>");
+				labsContainer.append(lab);
+			}
+
+		br
+
+		div#uploadMenuElement
+		div#deleteMenuElement
+				
+		br
+		br
+
+		script.	
+			if(!{userType}=='admin'){
+
+
+				// ----- CREATING A NEW COURSE ICON ----- //
+
+				var uploadOption = document.getElementById('uploadMenuElement');
+					
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/add.png')
+
+				var newLink = document.createElement("a")
+				newLink.href ='/admin/createCourse'
+				newLink.innerHTML = 'Create Course';
+
+				uploadOption.appendChild(imgLink);
+				uploadOption.appendChild(document.createElement("br"));
+				uploadOption.appendChild(newLink);
+
+
+				// ----- DELETING A NEW COURSE ICON ----- //
+
+				var deleteOption = document.getElementById('deleteMenuElement');
+					
+				var imgLink = document.createElement("img")
+				imgLink.setAttribute('src','/assets/img/deleteFile.png')
+
+				var newLink = document.createElement("a")
+				newLink.href ='/admin/deleteCourse'
+				newLink.innerHTML = 'Delete Course';
+
+				deleteOption.appendChild(imgLink);
+				deleteOption.appendChild(document.createElement("br"));
+				deleteOption.appendChild(newLink);
+
+			}
+
+		br
+		br
+
+		
+
+
+		

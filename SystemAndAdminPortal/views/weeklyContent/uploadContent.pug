@@ -1,0 +1,41 @@
+//-
+//- uploadContent.pug
+//-
+//- Project:   INFT2031 Network and Admin Portal 
+//- Author:    Sharlene Von Drehnen, 2016
+//- Date:      10/12/2016 - 31/01/2017    
+//- 
+
+extends ../layout
+
+block title
+	title Add New Lab
+
+block content
+	
+	//- ----------------------- Mini navigation buttons to previous pages -------------------------------- -// 
+
+	div#backButton
+
+		img(src='/assets/img/arrow.gif')
+		a(href='/lab')  Labs 
+		img(src='/assets/img/arrow.gif')
+		a(href='/weeklyExercises')  Weekly Content  
+		img(src='/assets/img/arrow.gif')
+		a(href='')  Upload Lab Exercise
+
+	h1.o-header__title Upload Lab Exercises
+
+	//- ----------------------- Form to upload content -------------------------------- -// 
+
+	form(action='/admin/lab/req',enctype="multipart/form-data",method='post')
+		label(for='labname') Lab Name
+		input(id='labname',name='labname',type='text',required='')
+		
+		br
+		br
+		label(for='labfile') Lab File
+		br
+		input(id='labfile',name='labfile',type='file',accept='application/pdf',required='')
+		
+		input(id='submit',type='submit' value='Submit')
