@@ -33,3 +33,5 @@ This will connect and run the program on the local server which can be accessed 
 ![Alt text](Images/Capture1.PNG?raw=true "Login")
 
 ![Alt text](Images/Capture2.PNG?raw=true "Main Page")
+
+![Alt text](Images/Capture3.PNG?raw=true "Admin View - Manage Labs")
