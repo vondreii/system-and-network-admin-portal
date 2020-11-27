@@ -30,7 +30,3 @@ Use a regular command line to start the program with any of the following comman
 
 
 ![Alt text](Images/Capture1.PNG?raw=true "Login")
-
-![Alt text](Images/Capture2.PNG?raw=true "Main Page")
-
-![Alt text](Images/Capture3.PNG?raw=true "Admin View - Manage Labs")
