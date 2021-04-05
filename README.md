@@ -1,13 +1,9 @@
 # System and Network Admin Portal #
 
-## Overview ##
-This project aims to provide an interface (Systems & Network Admin Portal) for users to create, 
-use and delete Virtual Machines by using Microsoft Azure Portal to manage the storage and 
-distribution of Virtual Machines to users.
+## About ##
+This project aims to provide an interface (Systems & Network Admin Portal) within the UoN Network for users to create, use and delete Virtual Machines by using Microsoft Azure Portal to manage the storage and distribution of Virtual Machines to users.
 
-
-
-## Module Installation ##
+## To Install ##
 Use a regular command line to navigate to the SystemAndAdminPortal folder and install node_modules using this command:
 * npm install
 
@@ -28,5 +24,7 @@ Use a regular command line to start the program with any of the following comman
 * Username: c1234567 
 * Password: Password
 
+<br>
+<br>
 
 ![Alt text](Images/Capture1.PNG?raw=true "Login")
